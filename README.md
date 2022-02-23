@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Third party libraries installed:
+Chakra UI - For UI and Table \
+Recharts - For line chart \
+React Minimal Pie Chart - For pie chart
+
 ## Available Scripts
 
 In the project directory, you can run:
