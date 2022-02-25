@@ -1,11 +1,12 @@
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
 import './App.css';
+import Landing from './components/landing/landing';
 
 function App() {
   return (
-    <div>
-      Covi-Track Application
-    </div>
+    <Fragment>
+      <Landing />
+    </Fragment>
   );
 }
 
