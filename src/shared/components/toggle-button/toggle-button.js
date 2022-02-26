@@ -1,32 +1,33 @@
 import { Button, Icon } from '@chakra-ui/react';
 import React, { Fragment, useEffect, useState } from 'react';
-import { VscGraphLine, VscTable } from 'react-icons/vsc';
+import { VscTable } from 'react-icons/vsc';
+import { BsFillBarChartFill } from 'react-icons/bs';
 
 const ToggleButton = (props) => {
 
-    const [lineChartActive, setLineChartActive] = useState();
+    const [barChartActive, setBarChartActive] = useState();
 
     useEffect(() => {
-        const localStorageKeyValue = localStorage.getItem('line');
+        const localStorageKeyValue = localStorage.getItem('bar');
         if (localStorageKeyValue !== null || localStorageKeyValue !== undefined) {
-            setLineChartActive(localStorageKeyValue === 'false' ? false : true);
+            setBarChartActive(localStorageKeyValue === 'false' ? false : true);
         }
     }, []);
 
-    const lineChartButtonClickHandler = () => {
-        setLineChartActive(true);
+    const barChartButtonClickHandler = () => {
+        setBarChartActive(true);
         setlocalStorageKeys(true);
-        props.lineChartShow();
+        props.barChartShow();
     }
 
     const tableButtonClickHandler = () => {
-        setLineChartActive(false);
+        setBarChartActive(false);
         setlocalStorageKeys(false);
         props.tableShow();
     }
 
     const setlocalStorageKeys = (value) => {
-        localStorage.setItem('line', value);
+        localStorage.setItem('bar', value);
         localStorage.setItem('table', !value);
     }
 
@@ -35,15 +36,15 @@ const ToggleButton = (props) => {
             <Button
                 borderRadius={'0'}
                 borderLeftRadius={'5px'}
-                isActive={lineChartActive}
-                onClick={lineChartButtonClickHandler}
+                isActive={barChartActive}
+                onClick={barChartButtonClickHandler}
             >
-                <Icon as={VscGraphLine} />
+                <Icon as={BsFillBarChartFill} />
             </Button>
             <Button
                 borderRadius={'0'}
                 borderRightRadius={'5px'}
-                isActive={!lineChartActive}
+                isActive={!barChartActive}
                 onClick={tableButtonClickHandler}
             >
                 <Icon as={VscTable} />

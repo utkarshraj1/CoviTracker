@@ -1,17 +1,18 @@
-import { Box, useDisclosure } from '@chakra-ui/react';
+import { Box, useDisclosure, useToast } from '@chakra-ui/react';
 import React from 'react';
-import CustomModal from '../../shared/components/modal/custom-modal';
 import Navigation from '../../shared/components/navigation/navigation';
 import ChartsPage from '../charts-page/charts-page';
+import ContactUs from '../contact-us/contactUs';
 
 const Landing = () => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const toast = useToast();
 
     return (
         <Box>
             <Navigation emailButtonClick={onOpen} />
-            <CustomModal isOpen={isOpen} onClose={onClose} />
+            <ContactUs isOpen={isOpen} onClose={onClose} toast={toast} />
             <Box
                 display={'flex'}
                 justifyContent={'center'}

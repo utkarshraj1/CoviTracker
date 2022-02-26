@@ -1,21 +1,21 @@
 import { Box, Flex, Heading, Spacer, Text } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
-import CustomLineChart from '../../shared/components/line-chart/line-chart';
+import CustomBarChart from '../../shared/components/bar-chart/bar-chart';
 import CustomDataTable from '../../shared/components/table/table';
 import ToggleButton from '../../shared/components/toggle-button/toggle-button';
 
 const ChartsPage = () => {
 
-    const [currentPage, setCurrentPage] = useState('line');
+    const [currentPage, setCurrentPage] = useState('bar');
 
     useEffect(() => {
-        setCurrentPage(localStorage.getItem('line') === 'true'
-            ? 'line'
+        setCurrentPage(localStorage.getItem('bar') === 'true'
+            ? 'bar'
             : 'table');
     }, []);
 
-    const lineChartShow = () => {
-        setCurrentPage('line');
+    const barChartShow = () => {
+        setCurrentPage('bar');
     }
 
     const tableShow = () => {
@@ -43,13 +43,13 @@ const ChartsPage = () => {
                     mx={'1'}
                 >
                     <Box p={'3'}>
-                        {currentPage.includes('line') ? <Text>Trend</Text>
+                        {currentPage.includes('bar') ? <Text>Trend</Text>
                             : <Text>Countries</Text>}
                     </Box>
                     <Spacer />
                     <Box p={'2'}>
                         <ToggleButton
-                            lineChartShow={lineChartShow}
+                            barChartShow={barChartShow}
                             tableShow={tableShow}
                         />
                     </Box>
@@ -58,7 +58,7 @@ const ChartsPage = () => {
                     h={'88%'}
                     p={'5px'}
                 >
-                    {currentPage === 'line' && <CustomLineChart />}
+                    {currentPage === 'bar' && <CustomBarChart />}
                     {currentPage === 'table' && <CustomDataTable />}
                 </Box>
             </Box>
