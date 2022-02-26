@@ -46,21 +46,20 @@ const CustomBarChart = () => {
 
     // Transforms the response into component friendly obj
     const transformResponse = (response) => {
-        response = response.map(data => {
+        return response.map(data => {
             return {
                 country: data.country,
                 totalcases: data.cases.total,
                 totaldeaths: data.deaths.total
             };
-        });
-        response = response.sort((a, b) => b.totalcases - a.totalcases);
-        response = response.filter(data => {
-            const present = continentNames.find((name) => name === data.country);
-            if (!present) {
-                return data;
-            }
-        });
-        return response;
+        })
+            .sort((a, b) => b.totalcases - a.totalcases)
+            .filter(data => {
+                const present = continentNames.find((name) => name === data.country);
+                if (!present) {
+                    return data;
+                }
+            });
     }
 
     useEffect(async () => {
@@ -73,11 +72,11 @@ const CustomBarChart = () => {
                 datasets: [{
                     label: 'Total Cases',
                     data: top6Data.map(c => c.totalcases),
-                    backgroundColor: 'rgba(84, 110, 122, 0.5)'
+                    backgroundColor: 'rgba(84, 110, 122, 0.6)'
                 }, {
                     label: 'Total Deaths',
                     data: top6Data.map(c => c.totaldeaths),
-                    backgroundColor: 'rgba(109, 76, 65, 0.5)'
+                    backgroundColor: 'rgba(109, 76, 65, 0.6)'
                 }]
             };
         });
@@ -86,7 +85,7 @@ const CustomBarChart = () => {
 
     return (
         <Box
-            h={'388px'}
+            h={'420px'}
         >
             {chartLoading && <CustomSpinner />}
             {!chartLoading && <Bar

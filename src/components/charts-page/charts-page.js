@@ -28,10 +28,9 @@ const ChartsPage = () => {
             justify={'center'}
             align={'center'}
         >
-            <Heading>Covid Cases</Heading>
             <Box
-                h={'450px'}
-                w={'900px'}
+                h={'500px'}
+                w={'950px'}
                 border={'1px'}
                 borderColor={'gray.400'}
                 borderRadius={'15px'}
@@ -43,8 +42,7 @@ const ChartsPage = () => {
                     mx={'1'}
                 >
                     <Box p={'3'}>
-                        {currentPage.includes('bar') ? <Text>Trend</Text>
-                            : <Text>Countries</Text>}
+                        <Text fontSize='xs'>*Data sourced from free API</Text>
                     </Box>
                     <Spacer />
                     <Box p={'2'}>
